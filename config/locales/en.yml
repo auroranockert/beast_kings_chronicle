@@ -5,13 +5,16 @@
       short: "%e %b"
       long: "%B %e, %Y"
       only_day: "%e"
- 
+
     day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
     abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
     month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
     abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
-    order: [ :year, :month, :day ]
-  
+    order:
+      - :year
+      - :month
+      - :day
+
   time:
     formats:
       default: "%a %b %d %H:%M:%S %Z %Y"
@@ -19,50 +22,50 @@
       short: "%d %b %H:%M"
       long: "%B %d, %Y %H:%M"
       only_second: "%S"
-      
+
       datetime:
         formats:
           default: "%Y-%m-%dT%H:%M:%S%Z"
-          
+
     am: 'am'
     pm: 'pm'
-      
+
   datetime:
     distance_in_words:
       half_a_minute: 'half a minute'
       less_than_x_seconds:
         zero: 'less than 1 second'
         one: '1 second'
-        other: '{{count}} seconds'
+        other: '%{count} seconds'
       x_seconds:
         one: '1 second'
-        other: '{{count}} seconds'
+        other: '%{count} seconds'
       less_than_x_minutes:
         zero: 'less than a minute'
         one: '1 minute'
-        other: '{{count}} minutes'
+        other: '%{count} minutes'
       x_minutes:
         one: '1 minute'
-        other: '{{count}} minutes'
+        other: '%{count} minutes'
       about_x_hours:
         one: 'about 1 hour'
-        other: '{{count}} hours'
+        other: '%{count} hours'
       x_days:
         one: '1 day'
-        other: '{{count}} days'
+        other: '%{count} days'
       about_x_months:
         one: 'about 1 month'
-        other: '{{count}} months'
+        other: '%{count} months'
       x_months:
         one: '1 month'
-        other: '{{count}} months'
+        other: '%{count} months'
       about_x_years:
         one: 'about 1 year'
-        other: '{{count}} years'
+        other: '%{count} years'
       over_x_years:
         one: 'over 1 year'
-        other: '{{count}} years'
-      
+        other: '%{count} years'
+
   number:
     format:
       precision: 3
@@ -73,10 +76,10 @@
         unit: '$'
         precision: 2
         format: '%u %n'
-        
+
   active_record:
     error:
-      header_message: ["Couldn't save this {{object_name}}: 1 error", "Couldn't save this {{object_name}}: {{count}} errors."]
+      header_message: ["Couldn't save this %{object_name}: 1 error", "Couldn't save this %{object_name}: %{count} errors."]
       message: "Please check the following fields:"
     error_messages:
       inclusion: "is not included in the list"
@@ -86,16 +89,16 @@
       accepted: "must be accepted"
       empty: "must be given"
       blank: "must be given"
-      too_long: "is too long (no more than {{count}} characters)"
-      too_short: "is too short (no less than {{count}} characters)"
-      wrong_length: "is not the right length (must be {{count}} characters)"
+      too_long: "is too long (no more than %{count} characters)"
+      too_short: "is too short (no less than %{count} characters)"
+      wrong_length: "is not the right length (must be %{count} characters)"
       taken: "is not available"
       not_a_number: "is not a number"
-      greater_than: "must be greater than {{count}}"
-      greater_than_or_equal_to: "must be greater than or equal to {{count}}"
-      equal_to: "must be equal to {{count}}"
-      less_than: "must be less than {{count}}"
-      less_than_or_equal_to: "must be less than or equal to {{count}}"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater than or equal to %{count}"
+      equal_to: "must be equal to %{count}"
+      less_than: "must be less than %{count}"
+      less_than_or_equal_to: "must be less than or equal to %{count}"
       odd: "must be odd"
       even: "must be even"
 
@@ -103,38 +106,36 @@
     count_forums:
       zero: "no forum"
       one: "1 forum"
-      other: "{{num}} forums"
+      other: "%{num} forums"
     count_users:
       zero: "no users"
       one: "1 user"
-      other: "{{num}} users"
+      other: "%{num} users"
     count_users_active:
       zero: "no active users"
       one: "1 active user"
-      other: "{{num}} active users"
+      other: "%{num} active users"
     count_users_lurking:
       zero: "no lurking users"
       one: "1 lurking user"
-      other: "{{num}} lurking users"
+      other: "%{num} lurking users"
     count_voices:
       zero: "no voices"
       one: "1 voice"
-      other: "{{num}} voices"
+      other: "%{num} voices"
     count_topics:
       zero: "no topics"
       one: "1 topic"
-      other: "{{num}} topics"
+      other: "%{num} topics"
     count_posts:
       zero: "no posts"
       one: "1 post"
-      other: "{{num}} posts"
+      other: "%{num} posts"
     count_posts_found:
       zero: "no posts found"
       one: "1 post found"
-      other: "{{count}} posts found"
+      other: "%{count} posts found"
 
     views_users:
       email_directions: Enter your email, and a brand new login key will be sent to you.  Click the link in the email to log in, and then change your password.
       reset_password: Reset password
-      
-      

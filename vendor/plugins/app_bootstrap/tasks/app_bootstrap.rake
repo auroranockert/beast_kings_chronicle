@@ -1,6 +1,5 @@
 namespace :app do
   task :bootstrap => :setup do
-    Debugger.start
     say "Bootstrapping #{@app_name}..."
     
     puts
@@ -109,9 +108,7 @@ namespace :app do
   task :setup do
     require 'rubygems'
     gem 'highline'
-    gem 'ruby-debug'
     require 'ostruct'
-    require 'ruby-debug'
     require 'highline'
     require 'forwardable'
     @terminal = HighLine.new

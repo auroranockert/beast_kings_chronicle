@@ -22,9 +22,7 @@ class User < ActiveRecord::Base
   
   attr_readonly :posts_count, :last_seen_at
 
-  named_scope :named_like, lambda {|name|
-    { :conditions => ["users.display_name like ? or users.login like ?", 
-                        "#{name}%", "#{name}%"] }}
+  named_scope :named_like, lambda { |name| { :conditions => ["users.display_name like ? or users.login like ?", "#{name}%", "#{name}%"] }}
 
   def self.prefetch_from(records)
     find(:all, :select => 'distinct *', :conditions => ['id in (?)', records.collect(&:user_id).uniq])

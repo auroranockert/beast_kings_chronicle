@@ -5,24 +5,43 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.3' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.18' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+if RUBY_VERSION >= "2.0.0"
+  module Gem
+    def self.source_index
+      sources
+    end
+
+    def self.cache
+      sources
+    end
+
+    SourceIndex = Specification
+
+    class SourceList
+      # If you want vendor gems, this is where to start writing code.
+      def search( *args ); []; end
+      def each( &block ); end
+      include Enumerable
+    end
+  end
+end
+
 Rails::Initializer.run do |config|
+  config.gem 'iconv' if RUBY_VERSION >= "2.0.0"
+
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
   # See Rails::Configuration for more options.
 
-  config.gem 'mislav-will_paginate', :lib => "will_paginate", 
-    :source => "http://gems.github.com"
-    
+  config.gem 'will_paginate', :version => '~> 2.3.16'
   config.gem "bluecloth"
-
-  config.gem 'RedCloth', :lib => "redcloth",
-    :source => "http://code.whytheluckystiff.net"
+  config.gem 'RedCloth', :lib => "redcloth", :source => "http://code.whytheluckystiff.net"
 
   # Skip frameworks you're not going to use (only works if using vendor/rails).
   # To use Rails without a database, you must remove the Active Record framework
@@ -45,8 +64,8 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_altered_beast_session',
-    :secret      => 'f471415647be47dc513d5e345ca4e582a8f99f388e0ccd46a2cdac51e2cd27c8e8b4d7dbba379cf661d4857afaf6b1867489bbc5e16b5fb14d2c3e53df64c272'
+    :key => '_altered_beast_session',
+    :secret      => '2696bf30-5361-4254-a7aa-c7de4033d4b0:dc6c9e1a-6548-445d-a3cf-afc6536a0ab7'
   }
 
   # Use the database for sessions instead of the cookie-based default,
